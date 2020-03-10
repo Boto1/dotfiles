@@ -18,13 +18,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'valloric/youcompleteme'
-Plugin 'prettier/vim-prettier'
 Plugin 'pangloss/vim-javascript'
 Plugin 'raimondi/delimitmate'
 Plugin 'mxw/vim-jsx'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'w0rp/ale'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
 
@@ -35,6 +35,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
+set smartindent
 set softtabstop=2
 set autoindent
 set showmatch
@@ -75,10 +76,7 @@ let NERDTreeDirArrows = 1
 
 let b:ale_fixers = ['prettier', 'eslint'] 
 let g:ale_completion_enabled = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.less,*.scss,*.css,*.md,*.vue PrettierAsync
-let g:prettier#config#semi = 'false'
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#single_quote = 'true'
+map sf :ALEFix<cr>
 
 let g:ctrl_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'w'
@@ -102,3 +100,13 @@ map <silent> <C-h> <Plug>WinMoveLeft
 map <silent> <C-j> <Plug>WinMoveDown
 map <silent> <C-k> <Plug>WinMoveUp
 map <silent> <C-l> <Plug>WinMoveRight
+
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+nnoremap fo :<C-u>nohlsearch<cr>
