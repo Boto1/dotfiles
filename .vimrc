@@ -6,6 +6,8 @@ set rtp+=~/.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 set hidden
 
+let mapleader = ','
+
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -38,6 +40,7 @@ set smarttab
 set smartindent
 set softtabstop=2
 set autoindent
+set autowrite
 set showmatch
 
 set clipboard=unnamedplus
@@ -74,9 +77,13 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+nnoremap <leader>c :make<cr>
+let g:go_fmt_command = "goimports"     
+let g:go_auto_type_info = 1
+
 let b:ale_fixers = ['prettier', 'eslint'] 
 let g:ale_completion_enabled = 1
-map sf :ALEFix<cr>
+map <leader>f :ALEFix<cr>
 
 let g:ctrl_map = '<C-p>'
 let g:ctrlp_working_path_mode = 'w'
@@ -86,9 +93,9 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 nnoremap Q <Nop>
 
-let mapleader = ','
 nmap <leader>, :q<cr>
 nmap <leader>s :wq<cr>
+nmap <leader>. :w<cr>
 inoremap df <esc>
 
 " manage buffers
